@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { TimePeriod } from 'ngx-material-timepicker/src/app/material-timepicker/models/time-period.enum';
-import { TimeUnit } from 'ngx-material-timepicker/src/app/material-timepicker/models/time-unit.enum';
 import { ITask } from '../../shared/task.model';
-import { TaskService } from '../select-tasks-service/task-service.service';
-import { ITime } from '../../shared/time.model';
-import { isTypeOnlyImportOrExportDeclaration } from 'typescript';
+import { CreatedTaskService } from '../select-tasks-service/created-task-service.service';
 
 @Component({
   selector: 'app-select-tasks-page',
@@ -26,7 +22,7 @@ export class SelectTasksPage implements OnInit {
   tasks: ITask[];
 
   constructor(
-    private taskService: TaskService,
+    private taskService: CreatedTaskService,
   ) {}
 
   ngOnInit() {

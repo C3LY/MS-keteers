@@ -3,7 +3,7 @@ import { ITask } from "../../shared/task.model";
 import { BehaviorSubject, Observable } from "rxjs";
 
 @Injectable()
-export class TaskService {
+export class CreatedTaskService {
 
     id: number = 0;
     private tasks: BehaviorSubject<ITask[]>;

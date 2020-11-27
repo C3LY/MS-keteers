@@ -5,12 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainTimerPageComponent } from './main-timer-page/main-timer-page.component';
 import { SelectTasksPage } from './select-tasks/select-tasks-page/select-tasks-page.component';
-import { TaskService } from './select-tasks/select-tasks-service/task-service.service';
+import { CreatedTaskService } from './select-tasks/select-tasks-service/created-task-service.service';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import {MatIconModule, MatIconRegistry} from '@angular/material/icon';
 import {ImportCalendarComponent} from './import-calendar/import-calendar.component';
 import {Shared3rdPartyModule} from './shared/shared3rdParty.module';
@@ -44,7 +43,6 @@ import { MatButtonModule } from '@angular/material/button';
     MatFormFieldModule,
     MatInputModule,
     BrowserAnimationsModule,
-    NgxMaterialTimepickerModule,
     MatIconModule,
     AppRoutingModule,
     Shared3rdPartyModule,
@@ -53,7 +51,7 @@ import { MatButtonModule } from '@angular/material/button';
 
   ],
   providers: [
-    TaskService,
+    CreatedTaskService,
     MatIconRegistry
   ],
   bootstrap: [AppComponent]

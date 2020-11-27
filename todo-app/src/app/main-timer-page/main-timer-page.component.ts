@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import { CreatedTaskService } from '../select-tasks/select-tasks-service/created-task-service.service';
 
-interface Task {
+export interface Task {
   name: string;
   duration: number;
   timeToDo: string;
@@ -14,15 +15,29 @@ interface Task {
 
 export class MainTimerPageComponent implements OnInit {
 
+  updatedTask: Task[];
+
   tasks: Task[] = [
     {name: 'create slide deck', duration: 1, timeToDo: '10:00'},
     {name: ' implement search feature', duration: 2, timeToDo: '15:00'}
   ];
   counter: number;
-  constructor() { }
+  constructor(
+    private createdTaskService: CreatedTaskService,
+   ) { }
 
   ngOnInit() {
     this.counter = 0;
+    this.createdTaskService.getUpdatedTasks().subscribe((tasks) => {
+      for (var task of tasks) {
+        let t : Task = {
+            name: task.name,
+            duration: task.duration.hour,
+            timeToDo: "10:00"
+        }
+        this.tasks.push(t);
+      }
+    })
   }
 
   add() {
