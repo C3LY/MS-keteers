@@ -1,0 +1,21 @@
+.button {
+  border: deeppink;
+  color: deeppink;
+  padding: 150px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 100px;
+  width: 420px;
+  margin: 10px;
+}
+
+.buttonCircle {border-radius: 80%;}
+
+.containerClass{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  //height: 220px;
+  padding: 80px;
+}
