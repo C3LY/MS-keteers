@@ -1,4 +1,4 @@
 export interface ITime {
-    hour: number
-    minutes: number,
+    hour: number;
+    minutes: number;
 }

@@ -8,20 +8,20 @@ import { Subscription, interval, timer } from 'rxjs';
   styleUrls: ['./timer.component.scss']
 })
 export class TimerComponent implements OnInit {
-    ngOnInit(): void {
-
-    }
-
-  name = 'Angular 6';
-  timeLeft = 121;
-  interval;
-  subscribeTimer: any;
-
-  timeMinutes = 0;
-  timeSeconds = 0;
 
   constructor() {
   }
+
+  timeLeft = 1500;
+  interval;
+  subscribeTimer: any;
+  timedefault = 1501;
+  timeMinutes = 25;
+  timeSeconds = '00';
+  toggle = true;
+    ngOnInit(): void {
+
+    }
 
   oberserableTimer() {
     const source = timer(1000, 2000);
@@ -36,7 +36,7 @@ export class TimerComponent implements OnInit {
       if (this.timeLeft > 0) {
         this.timeLeft--;
         this.timeMinutes = Math.floor(this.timeLeft / 60);
-        this.timeSeconds = Math.floor(this.timeLeft - (this.timeMinutes* 60));
+        this.timeSeconds = (Math.floor(this.timeLeft - (this.timeMinutes * 60))).toString();
       } else {
         this.timeLeft = 60;
       }
@@ -45,5 +45,19 @@ export class TimerComponent implements OnInit {
 
   pauseTimer() {
     clearInterval(this.interval);
+  }
+
+  toggleTimer() {
+  if (this.toggle) {
+    this.startTimer();
+    this.toggle = false;
+  } else {
+    this.pauseTimer();
+    this.toggle = true;
+  }
+  }
+
+  resetTimer() {
+    this.timeLeft = this.timedefault;
   }
 }

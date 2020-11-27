@@ -1,9 +1,13 @@
 <mat-progress-bar mode="buffer"></mat-progress-bar>
 
-<button mat-flat-button (click)='startTimer()'>Start Timer</button>
-<button mat-flat-button (click)='pauseTimer()'>Pause</button>
-
-<div>
-<span style="font-size: 100px">{{timeMinutes}}:{{timeSeconds}}</span>
+<!--<button mat-stroked-button color="accent" style="padding: 80px; margin: 20px; font-size: 50px;" (click)='startTimer()'>Start Timer</button>-->
+<!--<button mat-stroked-button color="accent" style="padding: 80px; margin: 20px; font-size: 50px;"  (click)='pauseTimer()'>Pause</button>-->
+<div>  <button (click)="resetTimer()" mat-stroked-button> Reset</button></div>
+<div class="containerClass">
+  <button (click)='toggleTimer()' class="buttonClass" color="accent" mat-stroked-button>{{timeMinutes}}
+    :{{timeSeconds}}</button>
+  <!--    <span style="font-size: 100px">{{timeMinutes}}:{{timeSeconds}}</span>-->
 </div>
+
+
 <!--<p (click)="oberserableTimer()">Start Observable timer</p> {{subscribeTimer}}-->

@@ -1,5 +1,5 @@
 import { NullTemplateVisitor } from '@angular/compiler';
-declare var require: any
+declare var require: any;
 import { Component, OnInit } from '@angular/core';
 import { ITask } from '../shared/task.model';
 import { CreatedTaskService } from '../select-tasks/select-tasks-service/created-task-service.service';
@@ -13,53 +13,54 @@ const ICAL = require('ical.js');
 export class ImportCalendarComponent implements OnInit {
 
   calendar: File = null;
-  ICALevents = []
+  ICALevents = [];
 
+<<<<<<< HEAD
   tasks: ITask[];
 
   constructor(private taskService: CreatedTaskService) {}
   
+=======
+  constructor() { }
+
+>>>>>>> 6166474f2ffca2bb4a17a24bc5c7e8aeac3a08e0
   ngOnInit() {
   }
 
   handleCalendar(e) {
     this.calendar = e.target.files[0];
-    let fileReader = new FileReader();
+    const fileReader = new FileReader();
     fileReader.onload = (e) => {
-      let parsed = ICAL.parse(fileReader.result);
+      const parsed = ICAL.parse(fileReader.result);
       this.setEvents(parsed);
 
-    }
+    };
     fileReader.readAsText(this.calendar);
   }
 
   setEvents(calendar) {
-    let events = [];
+    const events = [];
     calendar[2].forEach(event => {
       if (event[0] = "vevent") {
         let parsedEvent = []
         var dtstart, dtend, summary;
         event[1].forEach(property => {
-          if (dtstart == null && property[0] == "dtstart") {
+          if (dtstart == null && property[0] == 'dtstart') {
             dtstart = [property[0], property[3]];
-          }
-
-          else if (dtend == null && property[0] == "dtend") {
+          } else if (dtend == null && property[0] == 'dtend') {
             dtend = [property[0], property[3]];
-          }
-          
-          else if (summary == null && property[0] == "summary") {
+          } else if (summary == null && property[0] == 'summary') {
             summary = [property[0], property[3]];
           }
         });
 
         if (dtstart && dtend && summary) {
-          let dtduration = ["dtduration", new Date(dtend[1]).getTime() - new Date(dtstart[1]).getTime()];
+          const dtduration = ['dtduration', new Date(dtend[1]).getTime() - new Date(dtstart[1]).getTime()];
           parsedEvent = [dtstart, dtend, summary, dtduration];
           events.push(parsedEvent);
         }
       }
-    })
+    });
     this.ICALevents = events;
     console.log(this.ICALevents);
 

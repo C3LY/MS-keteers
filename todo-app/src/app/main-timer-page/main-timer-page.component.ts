@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {MatDialog, MatDialogConfig} from '@angular/material';
+import {PopupPunishmentsComponent} from '../popup-punishments/popup-punishments.component';
 import { CreatedTaskService } from '../select-tasks/select-tasks-service/created-task-service.service';
 
 export interface Task {
@@ -22,9 +24,17 @@ export class MainTimerPageComponent implements OnInit {
     {name: ' implement search feature', duration: 2, timeToDo: '15:00'}
   ];
   counter: number;
-  constructor(
-    private createdTaskService: CreatedTaskService,
-   ) { }
+  constructor(private dialog: MatDialog, private createdTaskService: CreatedTaskService,) { }
+
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    this.dialog.open(PopupPunishmentsComponent, dialogConfig);
+
+    // const dialogRef = this.dialog.open(PopupPunishmentsComponent, dialogConfig);
+  }
 
   ngOnInit() {
     this.counter = 0;
