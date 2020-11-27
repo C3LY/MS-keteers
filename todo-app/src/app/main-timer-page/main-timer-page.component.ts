@@ -8,6 +8,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class MainTimerPageComponent implements OnInit {
 
+  tasks: string[] = ['task1', 'task2'];
   constructor() { }
 
   ngOnInit() {
