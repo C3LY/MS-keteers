@@ -4,35 +4,49 @@
 
 <mat-card class="example-class">
     <mat-card-header>
-        <mat-card-title> Create task </mat-card-title>
+        <mat-card-title>New Task</mat-card-title>
     </mat-card-header>
-    
-        <form [formGroup]="newTaskForm" (ngSubmit)="saveTask(newTaskForm.value)">
-            <mat-card-content>
-                <div class="form-group" [ngClass]="{'error': name.invalid && name.dirty}">
-                    <label for ="taskName">Task Name:</label>
-                    <input formControlName="name" id="taskName" type="text" class="form-control" placeholder="task name..." />
-                </div>
-
-                <div class="form-group" [ngClass]="{'error': name.invalid && name.dirty}">
-                    <label for ="taskStartTime">Start time:</label>
-                    <input formControlName="startTime" id="taskStartTime" type="text" class="form-control" placeholder="start time..." />
-                </div>
-
-                <div class="form-group" [ngClass]="{'error': name.invalid && name.dirty}">
-                    <label for ="taskEndTime">End time:</label>
-                    <input formControlName="endTime" id="taskEndTime" type="text" class="form-control" placeholder="end time..." />
-                </div>
-
-                <div class="form-group" [ngClass]="{'error': name.invalid && name.dirty}">
-                    <label for ="taskInformation">Other information:</label>
-                    <input formControlName="information" id="taskInformation" type="text" class="form-control" placeholder="information..." />
-                </div>
-            </mat-card-content>
-            <mat-card-actions>
-                <button mat-button type="submit">Save</button>
-            </mat-card-actions>
-        </form>
-    
+    <form [formGroup]="newTaskForm" (ngSubmit)="saveTask(newTaskForm.value)">
+        <mat-card-content>
+            <table class ="example-full-width" cellspace="0">
+                <tr>
+                    <td> 
+                        <mat-form-field class = "example-full-width"> 
+                            <mat-label for ="taskName">Task Name</mat-label>
+                            <input matInput formControlName="name" id="taskName" type="text" class="form-control" placeholder="task name...">
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field class = "example-full-width"> 
+                            <mat-label for ="taskStartTime">Start time</mat-label>
+                            <input matInput formControlName="startTime" id="taskStartTime" type="text" class="form-control" placeholder="start time..." />
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field class = "example-full-width"> 
+                            <mat-label for ="taskStartTime">End time</mat-label>
+                            <input matInput formControlName="endTime" id="taskEndTime" type="text" class="form-control" placeholder="end time..." />
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field class = "example-full-width"> 
+                            <mat-label for ="taskStartTime">Other information</mat-label>
+                            <textarea matInput formControlName="information" id="taskInformation" type="text" class="form-control" placeholder="information..."></textarea>
+                        </mat-form-field>
+                    </td>
+                </tr>
+            </table>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button type="submit">Save</button>
+    </mat-card-actions>
+</form>
 </mat-card>
+
+
+
 
