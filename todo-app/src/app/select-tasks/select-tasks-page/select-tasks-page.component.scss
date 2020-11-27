@@ -52,3 +52,20 @@ body {
     justify-self: center;
 }
 
+.center {
+    justify-content: center;
+    justify-items: center;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+}
+
+.spaced {
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.title-spaced {
+    margin-left: 60px;
+    margin-right: 10px;
+}

@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { TimePeriod } from 'ngx-material-timepicker/src/app/material-timepicker/models/time-period.enum';
+import { TimeUnit } from 'ngx-material-timepicker/src/app/material-timepicker/models/time-unit.enum';
 import { ITask } from '../../shared/task.model';
 import { TaskService } from '../select-tasks-service/task-service.service';
+import { ITime } from '../../shared/time.model';
+import { isTypeOnlyImportOrExportDeclaration } from 'typescript';
 
 @Component({
   selector: 'app-select-tasks-page',
@@ -13,8 +17,11 @@ export class SelectTasksPage implements OnInit {
 
   newTaskForm: FormGroup;
   name: FormControl;
-  startTime: FormControl;
-  endTime: FormControl;
+  hour: FormControl;
+  minutes: FormControl;
+
+  minutesList: number[];
+  hourList: number[];
 
   tasks: ITask[];
 
@@ -24,13 +31,19 @@ export class SelectTasksPage implements OnInit {
 
   ngOnInit() {
     this.name = new FormControl('', Validators.required);
-    this.startTime = new FormControl('', Validators.required);
-    this.endTime = new FormControl('', Validators.required);
+    this.hour = new FormControl('', Validators.required);
+    this.minutes = new FormControl('', Validators.required);
    
+    this.minutesList = [];
+    for (var i=0; i<60; i++) { this.minutesList.push(i); }
+
+    this.hourList = [];
+    for (var i=0; i<24; i++) { this.hourList.push(i); }
+
     this.newTaskForm = new FormGroup({
       name: this.name,
-      startTime: this.startTime,
-      endTime: this.endTime,
+      hour: this.hour,
+      minutes: this.minutes
     })
     this.taskService.getUpdatedTasks().subscribe((tasks) => {
       this.tasks = tasks
@@ -39,11 +52,17 @@ export class SelectTasksPage implements OnInit {
   }
   
   saveTask(formValues) {
+
+    var hou: number = formValues.hour;
+    var min: number = formValues.minutes;
+
     let task: ITask = {
       id: undefined,
       name: formValues.name,
-      startTime: formValues.startTime,
-      endTime: formValues.endTime,
+      duration: {
+        hour: hou,
+        minutes: min
+      }
     }
     console.log(task)
     this.taskService.saveTask(task);

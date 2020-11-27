@@ -20,6 +20,8 @@ import { SetupMakeGoals1Component } from './setup-make-goals1/setup-make-goals1.
 import { SetupCheckCalendar2Component } from './setup-check-calendar2/setup-check-calendar2.component';
 import { PopupPunishmentsComponent } from './popup-punishments/popup-punishments.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select'
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatIconModule,
     AppRoutingModule,
     Shared3rdPartyModule,
+    MatSelectModule,
+    MatButtonModule
 
   ],
   providers: [
