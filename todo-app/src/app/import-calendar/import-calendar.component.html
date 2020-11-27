@@ -1,3 +1,7 @@
-<p>
-  import-calendar works!
-</p>
+<div class="form-group">
+  <label for="file">Upload Calendar</label>
+  <input type="file"
+        id="file"
+        accept=".ics"
+        (change)="handleCalendar($event)">
+</div>>
