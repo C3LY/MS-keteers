@@ -9,9 +9,15 @@ import {Component, OnInit} from '@angular/core';
 export class MainTimerPageComponent implements OnInit {
 
   tasks: string[] = ['task1', 'task2'];
+  counter: number;
   constructor() { }
 
   ngOnInit() {
+    this.counter = 0;
+  }
+
+  add() {
+    this.counter++;
   }
 
 }

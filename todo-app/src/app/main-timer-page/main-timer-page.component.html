@@ -1,6 +1,12 @@
-<h2>Dont get distracted! </h2>
+<h2>Don't get distracted! </h2>
 
 <app-timer></app-timer>
+<div class="containerClass">
+  <button (click)="add()" class="button buttonCircle mat-elevation-z4"
+          matRipple [matRippleColor]="'lightgrey'">{{counter}}</button>
+</div>
+
+
 <div *ngFor="let task of tasks">
   <mat-card> {{task}}</mat-card>
 </div>
