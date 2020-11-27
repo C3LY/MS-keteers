@@ -1,0 +1,54 @@
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 16px;
+
+    background-color:red;
+    align-items: center;
+    height: 50px;
+
+    margin: 0 300px 10px;
+    padding: 10px;
+    flex-direction: row;
+
+    transition: all 0.2s ease-in-out;
+    border-radius: 8px;
+
+}
+
+.card-containers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 16px;
+
+    background-color: orange;
+    align-items: center;
+    height: 50px;
+
+    margin: 0 400px 10px;
+    padding: 10px;
+    flex-direction: row;
+
+    transition: all 0.2s ease-in-out;
+    border-radius: 8px;
+}
+
+.spread {
+    margin:20px;
+}
+
+body {
+    background-color: grey;
+}
+
+.central {
+    justify-content: center;
+    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+}
+

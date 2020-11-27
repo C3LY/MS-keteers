@@ -15,7 +15,8 @@ export class SelectTasksPage implements OnInit {
   name: FormControl;
   startTime: FormControl;
   endTime: FormControl;
-  information: FormControl;
+
+  tasks: ITask[];
 
   constructor(
     private taskService: TaskService,
@@ -25,15 +26,16 @@ export class SelectTasksPage implements OnInit {
     this.name = new FormControl('', Validators.required);
     this.startTime = new FormControl('', Validators.required);
     this.endTime = new FormControl('', Validators.required);
-    this.information = new FormControl('', [Validators.required, Validators.maxLength(120)]);
-
+   
     this.newTaskForm = new FormGroup({
       name: this.name,
       startTime: this.startTime,
       endTime: this.endTime,
-      information: this.information
     })
-    console.log("yo")
+    this.taskService.getUpdatedTasks().subscribe((tasks) => {
+      this.tasks = tasks
+      console.log(this.tasks);
+    });
   }
   
   saveTask(formValues) {
@@ -42,7 +44,6 @@ export class SelectTasksPage implements OnInit {
       name: formValues.name,
       startTime: formValues.startTime,
       endTime: formValues.endTime,
-      information: formValues.information
     }
     console.log(task)
     this.taskService.saveTask(task);

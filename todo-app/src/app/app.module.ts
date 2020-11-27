@@ -11,6 +11,8 @@ import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import {MatIconModule, MatIconRegistry} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -26,10 +28,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxMaterialTimepickerModule,
+    MatIconModule
   ],
   providers: [
-    TaskService
+    TaskService,
+    MatIconRegistry
   ],
   bootstrap: [AppComponent]
 })

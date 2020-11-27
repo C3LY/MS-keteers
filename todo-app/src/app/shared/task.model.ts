@@ -3,5 +3,4 @@ export interface ITask {
     name: string
     startTime: Date
     endTime: Date
-    information: string
 }
