@@ -1,6 +1,6 @@
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription, interval } from 'rxjs';
+import { Subscription, interval, timer } from 'rxjs';
 
 @Component({
   selector: 'app-timer',
@@ -8,42 +8,42 @@ import { Subscription, interval } from 'rxjs';
   styleUrls: ['./timer.component.scss']
 })
 export class TimerComponent implements OnInit {
-  private subscription: Subscription;
+    ngOnInit(): void {
 
-  public dateNow = new Date();
-  public dDay = new Date('Jan 01 2021 00:00:00');
-  milliSecondsInASecond = 1000;
-  hoursInADay = 24;
-  minutesInAnHour = 60;
-  SecondsInAMinute  = 60;
+    }
 
-  public timeDifference;
-  public secondsToDday;
-  public minutesToDday;
-  public hoursToDday;
-  public daysToDday;
+  name = 'Angular 6';
+  timeLeft = 121;
+  interval;
+  subscribeTimer: any;
 
+  timeMinutes = 0;
+  timeSeconds = 0;
 
-  private getTimeDifference () {
-    this.timeDifference = this.dDay.getTime() - new  Date().getTime();
-    this.allocateTimeUnits(this.timeDifference);
+  constructor() {
   }
 
-  private allocateTimeUnits (timeDifference) {
-    this.secondsToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond) % this.SecondsInAMinute);
-    this.minutesToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour) % this.SecondsInAMinute);
-    // tslint:disable-next-line:max-line-length
-    this.hoursToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute) % this.hoursInADay);
-    // tslint:disable-next-line:max-line-length
-    this.daysToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute * this.hoursInADay));
+  oberserableTimer() {
+    const source = timer(1000, 2000);
+    const abc = source.subscribe(val => {
+      console.log(val, '-');
+      this.subscribeTimer = this.timeLeft - val;
+    });
   }
 
-  ngOnInit() {
-    this.subscription = interval(1000)
-      .subscribe(x => { this.getTimeDifference(); });
+  startTimer() {
+    this.interval = setInterval(() => {
+      if (this.timeLeft > 0) {
+        this.timeLeft--;
+        this.timeMinutes = Math.floor(this.timeLeft / 60);
+        this.timeSeconds = Math.floor(this.timeLeft - (this.timeMinutes* 60));
+      } else {
+        this.timeLeft = 60;
+      }
+    }, 1000);
   }
 
-  // ngOnDestroy() {
-  //   this.subscription.unsubscribe();
-  // }
+  pauseTimer() {
+    clearInterval(this.interval);
+  }
 }

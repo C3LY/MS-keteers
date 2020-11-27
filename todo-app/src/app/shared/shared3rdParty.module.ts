@@ -4,6 +4,7 @@ import {NgModule} from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatRippleModule} from '@angular/material';
+import {MatButtonModule} from '@angular/material';
 
 @NgModule({
   declarations: [] ,
@@ -11,12 +12,14 @@ import {MatRippleModule} from '@angular/material';
    CommonModule,
   MatCardModule,
     MatProgressBarModule,
-    MatRippleModule
+    MatRippleModule,
+    MatButtonModule
   ],
   exports: [
     MatCardModule,
     MatProgressBarModule,
-    MatRippleModule
+    MatRippleModule,
+    MatButtonModule
   ]
 })
 
