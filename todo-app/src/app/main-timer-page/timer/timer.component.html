@@ -1,0 +1,9 @@
+<mat-progress-bar mode="buffer"></mat-progress-bar>
+
+<button mat-flat-button (click)='startTimer()'>Start Timer</button>
+<button mat-flat-button (click)='pauseTimer()'>Pause</button>
+
+<div>
+<span style="font-size: 100px">{{timeMinutes}}:{{timeSeconds}}</span>
+</div>
+<!--<p (click)="oberserableTimer()">Start Observable timer</p> {{subscribeTimer}}-->
