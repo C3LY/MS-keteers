@@ -15,15 +15,10 @@ export class ImportCalendarComponent implements OnInit {
   calendar: File = null;
   ICALevents = [];
 
-<<<<<<< HEAD
   tasks: ITask[];
 
   constructor(private taskService: CreatedTaskService) {}
   
-=======
-  constructor() { }
-
->>>>>>> 6166474f2ffca2bb4a17a24bc5c7e8aeac3a08e0
   ngOnInit() {
   }
 
