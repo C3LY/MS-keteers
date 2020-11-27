@@ -29,7 +29,7 @@ export class SelectTasksPage implements OnInit {
     this.name = new FormControl('', Validators.required);
     this.hour = new FormControl('', Validators.required);
     this.minutes = new FormControl('', Validators.required);
-   
+
     this.minutesList = [];
     for (var i=0; i<60; i++) { this.minutesList.push(i); }
 
@@ -46,7 +46,7 @@ export class SelectTasksPage implements OnInit {
       console.log(this.tasks);
     });
   }
-  
+
   saveTask(formValues) {
 
     var hou: number = formValues.hour;

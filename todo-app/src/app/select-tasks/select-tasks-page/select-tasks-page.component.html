@@ -1,61 +1,61 @@
-<div class="col-md-12">
-    <h1 class = "central"> Tasks </h1>
-</div>
+<!--<div class="col-md-12">-->
+<!--    <h1 class = "central"> Tasks </h1>-->
+<!--</div>-->
 
-<h3 class="central" style="color:deeppink"> Create New Task</h3>
+<!--<h3 class="central" style="color:deeppink"> Create New Task</h3>-->
 
 
-<form [formGroup]="newTaskForm" (ngSubmit)="saveTask(newTaskForm.value)">
-    <mat-card> 
-        <span class="center">
-            <span class = "spaced">
-                <mat-form-field class = "example-full-width">
-                <mat-label for ="taskName" class="mat-typography">Task Name:</mat-label>
-                <div>
-                    <input matInput formControlName="name" id="taskName" type="text" class="form-control" placeholder="task name...">
-                </div>
-                </mat-form-field>
-            </span>
+<!--<form [formGroup]="newTaskForm" (ngSubmit)="saveTask(newTaskForm.value)">-->
+<!--    <mat-card> -->
+<!--        <span class="center">-->
+<!--            <span class = "spaced">-->
+<!--                <mat-form-field class = "example-full-width">-->
+<!--                <mat-label for ="taskName" class="mat-typography">Task Name:</mat-label>-->
+<!--                <div>-->
+<!--                    <input matInput formControlName="name" id="taskName" type="text" class="form-control" placeholder="task name...">-->
+<!--                </div>-->
+<!--                </mat-form-field>-->
+<!--            </span>-->
 
-            <span class = "title-spaced">
-                <h4>Task Duration:</h4>
-            </span>
+<!--            <span class = "title-spaced">-->
+<!--                <h4>Task Duration:</h4>-->
+<!--            </span>-->
 
-            <span class = "spaced">
-                <mat-form-field >
-                    <mat-label>hour</mat-label>
-                    <mat-select formControlName="hour" id="hour">
-                        <mat-option *ngFor="let hour of hourList" [value]="hour">
-                            {{hour}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </span>
-            <mat-form-field>
-                <mat-label>minutes</mat-label>
-                <mat-select formControlName="minutes" id="minute" type="text" class="form-control">
-                    <mat-option *ngFor="let minute of minutesList" [value]="minute">
-                        {{minute}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </span>
-        <span class="center">
-            <button class="btn btn-primary" [disabled]="newTaskForm.invalid" mat-button type="submit">Save</button> 
-        </span>
-   </mat-card>          
-</form>
+<!--            <span class = "spaced">-->
+<!--                <mat-form-field >-->
+<!--                    <mat-label>hour</mat-label>-->
+<!--                    <mat-select formControlName="hour" id="hour">-->
+<!--                        <mat-option *ngFor="let hour of hourList" [value]="hour">-->
+<!--                            {{hour}}-->
+<!--                        </mat-option>-->
+<!--                    </mat-select>-->
+<!--                </mat-form-field>-->
+<!--            </span>-->
+<!--            <mat-form-field>-->
+<!--                <mat-label>minutes</mat-label>-->
+<!--                <mat-select formControlName="minutes" id="minute" type="text" class="form-control">-->
+<!--                    <mat-option *ngFor="let minute of minutesList" [value]="minute">-->
+<!--                        {{minute}}-->
+<!--                    </mat-option>-->
+<!--                </mat-select>-->
+<!--            </mat-form-field>-->
+<!--        </span>-->
+<!--        <span class="center">-->
+<!--            <button class="btn btn-primary" [disabled]="newTaskForm.invalid" mat-button type="submit">Save</button> -->
+<!--        </span>-->
+<!--   </mat-card>          -->
+<!--</form>-->
 
 <span class=centre>
     <app-import-calendar></app-import-calendar>
 </span>
 
-<div *ngIf="tasks.length > 0">
-    <h3 class="central" style="color:deeppink"> Current tasks </h3>
-        <div *ngFor="let task of tasks; let i = index" (click)="tasks.splice(i,1)">
-            <mat-card style="font-size: 30px; color: deep-pink; margin: 15px; margin-left: 200px; margin-right: 200px;">
-                <span>{{task.name}}</span>
-                <span style="float: right">{{task.duration.hour}} hour {{task.duration.minutes}} mins</span>
-            </mat-card>
-        </div>
-</div>
+<!--<div *ngIf="tasks.length > 0">-->
+<!--    <h3 class="central" style="color:deeppink"> Current tasks </h3>-->
+<!--        <div *ngFor="let task of tasks; let i = index" (click)="tasks.splice(i,1)">-->
+<!--            <mat-card style="font-size: 30px; color: deep-pink; margin: 15px; margin-left: 200px; margin-right: 200px;">-->
+<!--                <span>{{task.name}}</span>-->
+<!--                <span style="float: right">{{task.duration.hour}} hour {{task.duration.minutes}} mins</span>-->
+<!--            </mat-card>-->
+<!--        </div>-->
+<!--</div>-->

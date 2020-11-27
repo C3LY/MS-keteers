@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 @Component({
   selector: 'app-popup-punishments',
   templateUrl: './popup-punishments.component.html',
@@ -13,7 +13,11 @@ export class PopupPunishmentsComponent implements OnInit {
 
   }
 
+  punishments: string[] = ['do 5 pushups', 'do 10 star jumps', 'eat a lemon', '15 situps'];
+  punishmentGiven;
+
   ngOnInit() {
+
   }
 
   save() {
@@ -22,6 +26,10 @@ export class PopupPunishmentsComponent implements OnInit {
 
   close() {
     this.dialogRef.close();
+  }
+
+  randomizePunishment() {
+    this.punishmentGiven = this.punishments[Math.floor(Math.random() * Math.floor(this.punishments.length - 1))];
   }
 
 }

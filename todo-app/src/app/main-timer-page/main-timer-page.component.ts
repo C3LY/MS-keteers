@@ -24,7 +24,7 @@ export class MainTimerPageComponent implements OnInit {
     {name: ' implement search feature', duration: 2, timeToDo: '15:00'}
   ];
   counter: number;
-  constructor(private dialog: MatDialog, private createdTaskService: CreatedTaskService,) { }
+  constructor(private dialog: MatDialog, private createdTaskService: CreatedTaskService, ) { }
 
   openDialog() {
     const dialogConfig = new MatDialogConfig();
@@ -39,15 +39,15 @@ export class MainTimerPageComponent implements OnInit {
   ngOnInit() {
     this.counter = 0;
     this.createdTaskService.getUpdatedTasks().subscribe((tasks) => {
-      for (var task of tasks) {
-        let t : Task = {
+      for (const task of tasks) {
+        const t: Task = {
             name: task.name,
             duration: task.duration.hour,
-            timeToDo: "10:00"
-        }
+            timeToDo: '10:00'
+        };
         this.tasks.push(t);
       }
-    })
+    });
   }
 
   add() {
