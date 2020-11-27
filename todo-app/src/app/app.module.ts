@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainTimerPageComponent } from './main-timer-page/main-timer-page.component';
-import { SelectTasksPage } from './select-tasks/select-tasks-page/select-tasks-page.component';
+// import { SelectTasksPageComponent } from './select-tasks/select-tasks-page/select-tasks-page.component';
 import { CreatedTaskService } from './select-tasks/select-tasks-service/created-task-service.service';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -19,14 +19,14 @@ import { SetupMakeGoals1Component } from './setup-make-goals1/setup-make-goals1.
 import { SetupCheckCalendar2Component } from './setup-check-calendar2/setup-check-calendar2.component';
 import { PopupPunishmentsComponent } from './popup-punishments/popup-punishments.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatSelectModule} from '@angular/material/select'
+import {MatSelectModule} from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainTimerPageComponent,
-    SelectTasksPage,
+    // SelectTasksPageComponent,
     ImportCalendarComponent,
     TimerComponent,
     StartUpPageComponent,

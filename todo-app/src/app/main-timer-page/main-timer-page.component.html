@@ -1,5 +1,4 @@
 
-<h1>Don't get distracted! </h1>
 <app-timer></app-timer>
 <div class="containerClass">
   <button (click)="add()" class="button buttonCircle mat-elevation-z4"
@@ -8,7 +7,7 @@
 
 
 <div *ngFor="let task of tasks">
-  <mat-card style="font-size: 50px; margin: 10px">
+  <mat-card style="font-size: 2vw; margin: 10px">
     <span> {{task.name}}</span>
     <span> | </span>
     <span> {{task.duration}} hr</span>
@@ -17,3 +16,5 @@
 </div>
 
 
+
+<button (click)="openDialog()">punish,ent</button>

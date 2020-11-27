@@ -5,6 +5,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatRippleModule} from '@angular/material/core';
 import {MatButtonModule} from '@angular/material/button';
+import {MatDialogModule} from '@angular/material';
 
 @NgModule({
   declarations: [] ,
@@ -13,13 +14,15 @@ import {MatButtonModule} from '@angular/material/button';
     MatCardModule,
     MatProgressBarModule,
     MatRippleModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule
   ],
   exports: [
     MatCardModule,
     MatProgressBarModule,
     MatRippleModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule
   ]
 })
 

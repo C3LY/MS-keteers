@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 @Component({
   selector: 'app-popup-punishments',
   templateUrl: './popup-punishments.component.html',
@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PopupPunishmentsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private dialogRef: MatDialogRef<PopupPunishmentsComponent>,
+    @Inject(MAT_DIALOG_DATA) data) {
+
+  }
 
   ngOnInit() {
+  }
+
+  save() {
+    this.dialogRef.close('a value');
+  }
+
+  close() {
+    this.dialogRef.close();
   }
 
 }
