@@ -9,7 +9,7 @@ import { CreatedTaskService } from '../select-tasks-service/created-task-service
   styleUrls: ['./select-tasks-page.component.scss']
 })
 
-export class SelectTasksPage implements OnInit {
+export class SelectTasksPageComponent implements OnInit {
 
   newTaskForm: FormGroup;
   name: FormControl;
@@ -31,36 +31,37 @@ export class SelectTasksPage implements OnInit {
     this.minutes = new FormControl('', Validators.required);
 
     this.minutesList = [];
-    for (var i=0; i<60; i++) { this.minutesList.push(i); }
+    for (let i = 0; i < 60; i++) { this.minutesList.push(i); }
 
     this.hourList = [];
-    for (var i=0; i<24; i++) { this.hourList.push(i); }
+    for (let i = 0; i < 24; i++) { this.hourList.push(i); }
 
     this.newTaskForm = new FormGroup({
       name: this.name,
       hour: this.hour,
       minutes: this.minutes
-    })
+    });
     this.taskService.getUpdatedTasks().subscribe((tasks) => {
-      this.tasks = tasks
+      this.tasks = tasks;
       console.log(this.tasks);
     });
   }
 
   saveTask(formValues) {
 
-    var hou: number = formValues.hour;
-    var min: number = formValues.minutes;
+    const hou: number = formValues.hour;
+    const min: number = formValues.minutes;
 
-    let task: ITask = {
+    const task: ITask = {
       id: undefined,
       name: formValues.name,
       duration: {
         hour: hou,
         minutes: min
-      }
-    }
-    console.log(task)
+      },
+      startTime: '00:00'
+    };
+    console.log(task);
     this.taskService.saveTask(task);
   }
 

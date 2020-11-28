@@ -16,7 +16,9 @@ export class MainTimerPageComponent implements OnInit {
 
   updatedTask: ITask[];
 
-  parentMessage;
+
+
+  parentMessage: ITask = {id: 1, name: 'test', duration: {hour:0, minutes: 25}, startTime: '00:00'};
 
   currentTask;
 

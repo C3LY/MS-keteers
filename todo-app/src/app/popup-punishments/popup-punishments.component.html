@@ -22,3 +22,20 @@
   <button class="mat-raised-button" (click)="close()">Close</button>
   <button class="mat-raised-button mat-primary" (click)="save()">Save</button>
 </mat-dialog-actions>
+
+
+
+<button (click)="isOpen = !isOpen" type="button" cdkOverlayOrigin #trigger="cdkOverlayOrigin">
+  {{isOpen ? "Close" : "Open"}}
+</button>
+
+
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="trigger"
+  [cdkConnectedOverlayOpen]="isOpen"
+>
+
+  <img src="https://static01.nyt.com/images/2020/04/07/opinion/07Balls1/07Balls1-mediumSquareAt3X-v2.jpg" alt="Girl in a jacket" style="width:400px;height:auto">
+</ng-template>
+

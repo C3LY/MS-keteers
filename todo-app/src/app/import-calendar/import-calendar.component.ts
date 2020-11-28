@@ -18,7 +18,7 @@ export class ImportCalendarComponent implements OnInit {
   tasks: ITask[];
 
   constructor(private taskService: CreatedTaskService) {}
-  
+
   ngOnInit() {
   }
 
@@ -36,9 +36,9 @@ export class ImportCalendarComponent implements OnInit {
   setEvents(calendar) {
     const events = [];
     calendar[2].forEach(event => {
-      if (event[0] = "vevent") {
-        let parsedEvent = []
-        var dtstart, dtend, summary;
+      if (event[0] = 'vevent') {
+        let parsedEvent = [];
+        let dtstart, dtend, summary;
         event[1].forEach(property => {
           if (dtstart == null && property[0] == 'dtstart') {
             dtstart = [property[0], property[3]];
@@ -61,21 +61,22 @@ export class ImportCalendarComponent implements OnInit {
 
     events.forEach(event => {
       console.log(event[2][1]);
-      console.log(Math.floor(event[3][1]/(1000*60*60)));
-      console.log(event[3][1]/(1000*60) % 60);
+      console.log(Math.floor(event[3][1] / (1000 * 60 * 60)));
+      console.log(event[3][1] / (1000 * 60) % 60);
 
-      var name: string = event[2][1];
-      var hou: number = Math.floor(event[3][1]/(1000*60*60));
-      var min: number = event[3][1]/(1000*60) % 60;
+      const name: string = event[2][1];
+      const hou: number = Math.floor(event[3][1] / (1000 * 60 * 60));
+      const min: number = event[3][1] / (1000 * 60) % 60;
 
-      let task: ITask = {
+      const task: ITask = {
         id: undefined,
         name: name,
         duration: {
           hour: hou,
           minutes: min
-        }
-      }
+        },
+        startTime: '00:00'
+      };
 
       console.log(task);
       this.taskService.saveTask(task);

@@ -10,7 +10,7 @@ import {ITask} from '../../shared/task.model';
 })
 export class TimerComponent implements OnInit {
 
-  @Input() parentMessage: ITask;
+  @Input() parentMessage: ITask = {id: 1, name: 'test', duration: {hour:0, minutes: 25}, startTime: '00:00'};
 
   constructor() {
   }
@@ -68,7 +68,7 @@ export class TimerComponent implements OnInit {
 
   resetTimer() {
     if (this.parentMessage) {
-      this.timedefault = (this.parentMessage.duration.hour * 60 * 60) + (this.parentMessage.duration.minutes * 60) + 1;
+     this.timedefault = (this.parentMessage.duration.hour * 60 * 60) + (this.parentMessage.duration.minutes * 60) + 1;
     }
     this.timeLeft = this.timedefault;
   }

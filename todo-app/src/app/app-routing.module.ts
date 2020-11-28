@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {MainTimerPageComponent} from './main-timer-page/main-timer-page.component';
-// import { SelectTasksPageComponent } from './select-tasks/select-tasks-page/select-tasks-page.component';
+import { SelectTasksPageComponent } from './select-tasks/select-tasks-page/select-tasks-page.component';
 
 import {StartUpPageComponent} from './start-up-page/start-up-page.component';
 import {SetupMakeGoals1Component} from './setup-make-goals1/setup-make-goals1.component';
@@ -17,11 +17,11 @@ const routes: Routes = [
     path: 'timer',
     component: MainTimerPageComponent,
   },
-  {path: 'punishment', component: PopupPunishmentsComponent}
-  // {
-  //   path: 'selectTasks',
-  //   component: SelectTasksPageComponent,
-  // }
+  {path: 'punishment', component: PopupPunishmentsComponent},
+  {
+    path: 'selectTasks',
+    component: SelectTasksPageComponent,
+  }
 ];
 
 @NgModule({

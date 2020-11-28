@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainTimerPageComponent } from './main-timer-page/main-timer-page.component';
-// import { SelectTasksPageComponent } from './select-tasks/select-tasks-page/select-tasks-page.component';
+import { SelectTasksPageComponent } from './select-tasks/select-tasks-page/select-tasks-page.component';
 import { CreatedTaskService } from './select-tasks/select-tasks-service/created-task-service.service';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -26,7 +26,7 @@ import { MatButtonModule } from '@angular/material/button';
   declarations: [
     AppComponent,
     MainTimerPageComponent,
-    // SelectTasksPageComponent,
+    SelectTasksPageComponent,
     ImportCalendarComponent,
     TimerComponent,
     StartUpPageComponent,

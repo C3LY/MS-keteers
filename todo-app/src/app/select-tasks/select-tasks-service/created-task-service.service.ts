@@ -26,7 +26,7 @@ export class CreatedTaskService {
         this.id += 1;
         console.log(TASKS);
         this.tasks.next(TASKS);
-    } 
+    }
 
     deleteTask(task: ITask) {
         delete TASKS[task.id];

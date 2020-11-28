@@ -32,12 +32,20 @@ export class PopupPunishmentsComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  isOpen = false;
   randomizePunishment() {
     if (!this.noMoreFlag) {
       const currentPunishment = this.punishmentGiven;
       while (this.punishmentGiven === currentPunishment) {
         this.punishmentGiven = this.punishments[Math.floor(Math.random() * Math.floor(this.punishments.length - 1))];
       }
+
+      let punishmentNo = Math.floor(Math.random() * Math.floor(9));
+      if(punishmentNo === 6) {
+        this.isOpen = true;
+
+      }
+
 
       this.counter--;
       this.listOfPunishmentsGiven.push(this.punishmentGiven);
