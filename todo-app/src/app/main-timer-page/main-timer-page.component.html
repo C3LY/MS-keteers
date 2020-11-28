@@ -1,20 +1,20 @@
 
-<app-timer></app-timer>
+<app-timer (messageEvent)="receiveMessage($event)" [parentMessage]="parentMessage" ></app-timer>
+
 <div class="containerClass">
-  <button (click)="add()" class="button buttonCircle mat-elevation-z4"
-          matRipple [matRippleColor]="'lightgrey'">{{counter}}</button>
+  <button id="counter" (click)="add()" class="button buttonCircle mat-elevation-z4"
+          matRipple [matRippleColor]="'lightgrey'" [disabled]="disableClock" b>{{counter}}</button>
 </div>
 
+<button mat-stroked-button (click)="openDialog()" style="font-size: 3vw;">Punishment 💀➡</button>
 
 <div *ngFor="let task of tasks">
-  <mat-card style="font-size: 2vw; margin: 10px">
+  <mat-card style="font-size: 2vw; margin: 10px"(click)="assignCurrentTask(task)">
     <span> {{task.name}}</span>
     <span> | </span>
-    <span> {{task.duration}} hr</span>
-    <span style="float: right">{{task.timeToDo}}</span>
+    <span> {{task.duration.hour}} hr  {{task.duration.minutes}} mins</span>
+    <span style="float: right">{{task.startTime}}</span>
   </mat-card>
 </div>
 
 
-
-<button (click)="openDialog()">punish,ent</button>

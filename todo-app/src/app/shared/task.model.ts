@@ -4,4 +4,5 @@ export interface ITask {
     id: number;
     name: string;
     duration: ITime;
+    startTime: string;
 }

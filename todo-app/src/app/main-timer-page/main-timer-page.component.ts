@@ -2,12 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import {PopupPunishmentsComponent} from '../popup-punishments/popup-punishments.component';
 import { CreatedTaskService } from '../select-tasks/select-tasks-service/created-task-service.service';
+import {ITask} from '../shared/task.model';
 
-export interface Task {
-  name: string;
-  duration: number;
-  timeToDo: string;
-}
 
 @Component({
   selector: 'app-main-timer-page',
@@ -16,15 +12,23 @@ export interface Task {
 })
 
 export class MainTimerPageComponent implements OnInit {
+  constructor(private dialog: MatDialog, private createdTaskService: CreatedTaskService, ) { }
 
-  updatedTask: Task[];
+  updatedTask: ITask[];
 
-  tasks: Task[] = [
-    {name: 'create slide deck', duration: 1, timeToDo: '10:00'},
-    {name: ' implement search feature', duration: 2, timeToDo: '15:00'}
+  parentMessage;
+
+  currentTask;
+
+  tasks: ITask[] = [
+    {id: 1, name: 'create slide deck', duration: {hour: 1, minutes: 0}, startTime: '10:00'},
+    {id: 2, name: 'implement search feature', duration: {hour: 2, minutes: 30}, startTime: '15:00'},
   ];
   counter: number;
-  constructor(private dialog: MatDialog, private createdTaskService: CreatedTaskService, ) { }
+
+  messageOfTimer: string;
+
+  disableClock: boolean;
 
   openDialog() {
     const dialogConfig = new MatDialogConfig();
@@ -41,18 +45,32 @@ export class MainTimerPageComponent implements OnInit {
     this.counter = 0;
     this.createdTaskService.getUpdatedTasks().subscribe((tasks) => {
       for (const task of tasks) {
-        const t: Task = {
+        const t: ITask = {
+            id: task.id,
             name: task.name,
-            duration: task.duration.hour,
-            timeToDo: '10:00'
+            duration: task.duration,
+            startTime: task.startTime
         };
         this.tasks.push(t);
       }
     });
+
+    this.disableClock = true;
+
   }
 
   add() {
     this.counter++;
   }
 
+  assignCurrentTask(selectedTask) {
+    this.currentTask = selectedTask;
+    this.parentMessage = this.currentTask;
+}
+
+  receiveMessage($event) {
+    this.messageOfTimer = $event;
+
+    this.disableClock = this.messageOfTimer === 'true';
+  }
 }

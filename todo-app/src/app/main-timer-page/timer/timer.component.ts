@@ -1,6 +1,7 @@
 
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy,  Output, EventEmitter, Input } from '@angular/core';
 import { Subscription, interval, timer } from 'rxjs';
+import {ITask} from '../../shared/task.model';
 
 @Component({
   selector: 'app-timer',
@@ -9,8 +10,11 @@ import { Subscription, interval, timer } from 'rxjs';
 })
 export class TimerComponent implements OnInit {
 
+  @Input() parentMessage: ITask;
+
   constructor() {
   }
+
 
   timeLeft = 1500;
   interval;
@@ -18,7 +22,10 @@ export class TimerComponent implements OnInit {
   timedefault = 1501;
   timeMinutes = 25;
   timeSeconds = '00';
-  toggle = true;
+  toggleOff = true;
+
+  @Output() messageEvent = new EventEmitter<string>();
+
     ngOnInit(): void {
 
     }
@@ -48,16 +55,27 @@ export class TimerComponent implements OnInit {
   }
 
   toggleTimer() {
-  if (this.toggle) {
+  if (this.toggleOff) {
     this.startTimer();
-    this.toggle = false;
+    this.toggleOff = false;
   } else {
     this.pauseTimer();
-    this.toggle = true;
+    this.toggleOff = true;
   }
+
+  this.sendMessage();
   }
 
   resetTimer() {
+    if (this.parentMessage) {
+      this.timedefault = (this.parentMessage.duration.hour * 60 * 60) + (this.parentMessage.duration.minutes * 60) + 1;
+    }
     this.timeLeft = this.timedefault;
   }
+
+  sendMessage() {
+    this.messageEvent.emit(this.toggleOff.toString());
+  }
+
+
 }
