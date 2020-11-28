@@ -7,17 +7,21 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 })
 export class PopupPunishmentsComponent implements OnInit {
 
+  counter = 1 ;
+  noMoreFlag = false;
   constructor(
     private dialogRef: MatDialogRef<PopupPunishmentsComponent>,
     @Inject(MAT_DIALOG_DATA) data) {
-
+    this.counter = data;
   }
 
-  punishments: string[] = ['do 5 pushups', 'do 10 star jumps', 'eat a lemon', '15 situps'];
+  punishments: string[] = ['do 5 pushups', 'do 10 star jumps', 'eat a lemon', '15 situps', 'take an arrow to the knee'];
   punishmentGiven;
 
-  ngOnInit() {
+  listOfPunishmentsGiven: string[] = new Array();
 
+  ngOnInit() {
+    this.noMoreFlag = this.counter < 1;
   }
 
   save() {
@@ -29,7 +33,20 @@ export class PopupPunishmentsComponent implements OnInit {
   }
 
   randomizePunishment() {
-    this.punishmentGiven = this.punishments[Math.floor(Math.random() * Math.floor(this.punishments.length - 1))];
+    if (!this.noMoreFlag) {
+      const currentPunishment = this.punishmentGiven;
+      while (this.punishmentGiven === currentPunishment) {
+        this.punishmentGiven = this.punishments[Math.floor(Math.random() * Math.floor(this.punishments.length - 1))];
+      }
+
+      this.counter--;
+      this.listOfPunishmentsGiven.push(this.punishmentGiven);
+
+      if (this.counter <= 0) {
+        this.noMoreFlag = true;
+      }
+    }
+
   }
 
 }

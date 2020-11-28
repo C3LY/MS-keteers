@@ -31,6 +31,7 @@ export class MainTimerPageComponent implements OnInit {
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
+    dialogConfig.data = this.counter;
     this.dialog.open(PopupPunishmentsComponent, dialogConfig);
 
     // const dialogRef = this.dialog.open(PopupPunishmentsComponent, dialogConfig);

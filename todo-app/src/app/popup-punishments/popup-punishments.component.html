@@ -2,10 +2,18 @@
 
 <mat-dialog-content>
 
-  <h1>RANDOM PUNSIHMENT SHOWN HERE</h1>
-  <button class="fire"> 1 punishment remaining...</button>
+  <div *ngIf="noMoreFlag===false">
+  <h1>{{punishmentGiven}}</h1>
+  <button class="fire" (click)="randomizePunishment()"> {{counter}} punishment remaining...</button>
+  </div>
 
+  <div *ngIf="noMoreFlag">
+    No punishments to give
+  </div>
 
+  <div *ngFor="let pun of listOfPunishmentsGiven">
+    <mat-card>{{pun}}</mat-card>
+  </div>
 </mat-dialog-content>
 
 
